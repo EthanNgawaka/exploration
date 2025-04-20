@@ -24,7 +24,7 @@ The main idea is to use the taylor series expansion of $u(x + \Delta x)$ and $i(
 
 looking at them it's pretty clear we can combine them in the following way to almost entirely extract $u''(x)$:
 ```math
-  u''(x) \approx \frac{u(x + \Delta x) - u(x) - \Delta x \, u'(x)}{(\Delta x)^2} + \mathcal{O}(\Delta x)
+  u''(x) \approx \frac{u(x + \Delta x) - 2u(x) + \Delta x \, u'(x)}{(\Delta x)^2} + \mathcal{O}(\Delta x)
 ```
 notice that trailing term, it's written here with big O notation to indicate that the trailing end of the taylor series grows with the square of $\Delta x$. This is our error term. There are some fancy things you can do to increase precision but we aren't *really* going for accuracy so this is fine.
 
