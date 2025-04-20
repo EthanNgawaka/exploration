@@ -3,7 +3,7 @@
 ## 1D Wave PDE
 The 1D wave equation is a simple second order partial differencial equation:
 
-```
+```math
   $\frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}$
 ```
 
@@ -16,7 +16,7 @@ where:
 ## Courant Condition
 Using the finite difference method for derivatives restricts us in a few ways but most importantly:
 
-```
+```math
   $ \frac{c \, \Delta t}{\Delta x} \leq 1 $
 ```
 
@@ -24,7 +24,7 @@ The Courant Condition, which must be satisfied for numerical stability. If it do
 
 We can take our chosen fixed step $\Delta t$ and simulation resolution $\Delta x$ and then restrict the domain of our "wave speed".
 
-```
+```math
   $ 0 \gt c \leq \frac{\Delta x}{\Delta t} $
 ```
 
