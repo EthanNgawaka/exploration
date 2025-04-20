@@ -12,6 +12,51 @@ where:
 - c is the wave speed (it's more than that ie its tension/linear density but we can simplify it into one const)
 
 
+## Numerical Differentiation
+So how do we actually solve this PDE? Well it's pretty easy actually, [this](https://www.youtube.com/watch?v=dKyqCPjhv0I) is a really great video for this topic.
+The main idea is to use the taylor series expansion of $u(x + \Delta x)$ and $i(x - \Delta x)$ and manipulate those to extract the $u''(x)$ term that we want. Those taylor series look like this:
+```math
+  u(x + \Delta x) = u(x) + \Delta x \, u'(x) + \frac{(\Delta x)^2}{2} \, u''(x) + \frac{(\Delta x)^3}{6} \, u^{(3)}(x) + \frac{(\Delta x)^4}{24} \, u^{(4)}(x) + \cdots
+
+
+  u(x - \Delta x) = u(x) - \Delta x \, u'(x) + \frac{(\Delta x)^2}{2} \, u''(x) - \frac{(\Delta x)^3}{6} \, u^{(3)}(x) + \frac{(\Delta x)^4}{24} \, u^{(4)}(x) - \cdots
+```
+
+looking at them it's pretty clear we can combine them in the following way to almost entirely extract $u''(x)$:
+```math
+  u''(x) \approx \frac{u(x + \Delta x) - u(x) - \Delta x \, u'(x)}{(\Delta x)^2} + \mathcal{O}(\Delta x)
+```
+notice that trailing term, it's written here with big O notation to indicate that the trailing end of the taylor series grows with the square of $\Delta x$. This is our error term. There are some fancy things you can do to increase precision but we aren't *really* going for accuracy so this is fine.
+
+Ok so hand wavy hand wavy I wrote all that latex out for a single variable ODEs but it's easy enough to see it extended to our PDE we had at the start. So let's sub these bad boys into our PDE!
+```math
+  \frac{u_{x,\,t+\Delta t} - 2u_{x,\,t} + u_{x,\,t-\Delta t}}{(\Delta t)^2}
+  =
+  c^2 \frac{u_{x+\Delta x,\,t} - 2u_{x,\,t} + u_{x-\Delta x,\,t}}{(\Delta x)^2}
+```
+
+Boom, rearranging now for our $u_{x,t+\Delta t}$ (i.e. our deflection at the next timestep), we arrive at the following:
+```math
+  u_{x,\,t+\Delta t} =
+  2u_{x,\,t} - u_{x,\,t-\Delta t} +
+  \left( \frac{c \, \Delta t}{\Delta x} \right)^2
+  \left( u_{x+\Delta x,\,t} - 2u_{x,\,t} + u_{x-\Delta x,\,t} \right)
+```
+well, well, well. Our deflection for the next timestep is dependent on the function value at *previous* timesteps! Riveting stuff.
+Note that we also need the deflection at the position before and after a given $x$, thus we need to handle boundary conditions. There are a few things you can do here but for now, I'm just going to stick with fixed boundary points but there are some really cool things we can do later on maybe.
+Our fixed Dirichlet boundary condition (named after big man Johann Dirichlet) looks like this:
+```math
+  u(0, t) = 0, \quad u(L, t) = 0 \quad \text{for all } t \geq 0
+```
+
+We also should probably set an initial condition, this can literally be anything; data points, actual analytic funcs, etc. For now let's just set it to a classic test case for the 1D wave equation, the Gaussian wave. This just looks like our good old Gaussian distribution.
+```math
+  u(x, 0) = A \exp\left(-\frac{(x - x_0)^2}{2 \sigma^2}\right)
+```
+We can do the same for velocity, let's just set it to 0.
+```math
+\frac{\partial u}{\partial t}(x, 0) = 0
+```
 
 ## Courant Condition
 Using the finite difference method for derivatives restricts us in a few ways but most importantly:
