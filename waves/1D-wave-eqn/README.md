@@ -17,8 +17,8 @@ So how do we actually solve this PDE? Well it's pretty easy actually, [this](htt
 The main idea is to use the taylor series expansion of $u(x + \Delta x)$ and $i(x - \Delta x)$ and manipulate those to extract the $u''(x)$ term that we want. Those taylor series look like this:
 ```math
   u(x + \Delta x) = u(x) + \Delta x \, u'(x) + \frac{(\Delta x)^2}{2} \, u''(x) + \frac{(\Delta x)^3}{6} \, u^{(3)}(x) + \frac{(\Delta x)^4}{24} \, u^{(4)}(x) + \cdots
-
-
+```
+```math
   u(x - \Delta x) = u(x) - \Delta x \, u'(x) + \frac{(\Delta x)^2}{2} \, u''(x) - \frac{(\Delta x)^3}{6} \, u^{(3)}(x) + \frac{(\Delta x)^4}{24} \, u^{(4)}(x) - \cdots
 ```
 
