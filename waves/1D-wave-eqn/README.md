@@ -74,3 +74,25 @@ We can take our chosen fixed step $\Delta t$ and simulation resolution $\Delta x
 ```
 
 This makes pretty intuitive sense conveniently, i.e. if we increase our simulation resolution we can increase our wave speed. In a handwavy sense, our wave speed is limited based on how "fine our grid in space and time" is.
+
+## Splishy Splashy (Making it look and feel more like water)
+Now that we have a pretty solid 1D wave equation solution using numerical methods, we can get to work on making it feel more like water. Tuning our constants dt, dx, and c till we get something nice yields the following:
+```math
+  \delta t = 0.05
+```
+```math
+  \delta x = 5
+```
+```math
+  c = 40
+```
+This produces something that feels pretty close to water. While not perfect, it would feel right at home in a simple 2D platformer or something along those lines.
+
+There are a few things that remain off still. Namely, when applying impulses to our water it feels choppy and sluggish. This is due to the (naive) approach taken of applying forces to a single point or equally to a set of nearby points. The first solution that comes to mind (and a probably terribly inefficient one) is to derive a gaussian distribution with values such that the curve is centered at the point of interaction and spread out nicely accross the surrounding area. This is pretty simple, our $x_0$ simply becomes our "ground zero" point and the other constants can be tuned depending on the interaction strength etc. With that, our jaggedness and sharp edges are no more. Now we just have a very *sludgy* feeling liquid. To fix this, a simple restoring force can be applied to the entire field with a simple += on each point.
+
+*Finally* we have something that looks pretty ok.
+
+## Final thoughts
+In the end this was surprisingly simple, an afternoon of wrapping my head around finite difference differentiation and another of banging it out in code. While the actual implementation leaves a lot to be desired, the foundations are there. I will probably end up coming back and doing some work with shaders and particles to try touch it up but for now the mesmerising motion of simple harmonic motion will have to do.
+I'm going to go on further into the world of fluid simulation so this was just me getting my toes wet but I'm pretty confident that you'd be hard pressed to find something that runs this fast and produces effects this nice.
+
