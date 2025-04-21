@@ -176,7 +176,7 @@ Game::Game(int init_windowW, int init_windowH, std::string init_title)
     : windowW(init_windowW), windowH(init_windowH), title(init_title)
 {
     InitWindow(windowW, windowH, title.c_str());
-    SetTargetFPS(60);
+    SetTargetFPS(360);
 
     std::cout << windowW << "x" << windowH << "\n";
 }

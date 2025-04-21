@@ -75,16 +75,19 @@ We can take our chosen fixed step $\Delta t$ and simulation resolution $\Delta x
 
 This makes pretty intuitive sense conveniently, i.e. if we increase our simulation resolution we can increase our wave speed. In a handwavy sense, our wave speed is limited based on how "fine our grid in space and time" is.
 
+## Timestep fuckery
+Unfortunately frame time and computer speed must be taken into account. This isn't too difficult, we can change our update function to do a simple accumulative fixed timestep.
+
 ## Splishy Splashy (Making it look and feel more like water)
 Now that we have a pretty solid 1D wave equation solution using numerical methods, we can get to work on making it feel more like water. Tuning our constants dt, dx, and c till we get something nice yields the following:
 ```math
-  \delta t = 0.05
+  \delta t = 0.016
 ```
 ```math
   \delta x = 5
 ```
 ```math
-  c = 40
+  c = 300
 ```
 This produces something that feels pretty close to water. While not perfect, it would feel right at home in a simple 2D platformer or something along those lines.
 
@@ -92,7 +95,22 @@ There are a few things that remain off still. Namely, when applying impulses to 
 
 *Finally* we have something that looks pretty ok.
 
+## Performance
+This terribly quick and dirty implementation is not the most performant code possible by far, but still runs pretty well for what it is. I can spawn 150 instances of our WaterSim object and still get 150fps while simply simulating wave propagation. *Interacting* with the simulation is another deal entirely. Whenever a wave is interacted with, the entire set of points is iterated over, making it extremely inefficient. Interacting with all 150 waves at once can simply crash the program, even just 10 tanks the fps. Obviously this is simply because of the way I've done it here specifically. One would never use this approach in a game or something, maybe only applying the Gaussian to close neighbours or other various speed ups.
+
 ## Final thoughts
 In the end this was surprisingly simple, an afternoon of wrapping my head around finite difference differentiation and another of banging it out in code. While the actual implementation leaves a lot to be desired, the foundations are there. I will probably end up coming back and doing some work with shaders and particles to try touch it up but for now the mesmerising motion of simple harmonic motion will have to do.
+
+
 I'm going to go on further into the world of fluid simulation so this was just me getting my toes wet but I'm pretty confident that you'd be hard pressed to find something that runs this fast and produces effects this nice.
 
+## Further Explorations
+- Rendering: Shaders and particles to *actually* water nicely.
+- Physics: Simple bouyancy and other such interactions to make pretty splish splash.
+- Optomization: Further improving the efficiency (especially of interactions) and properly benchmark them.
+- Modularity: Generally improve structure and flexibility of code to make it easier to plop into other projects.
+
+
+## Sources
+- https://www.youtube.com/watch?v=dKyqCPjhv0I
+- https://en.wikipedia.org/wiki/Wave_equation
