@@ -1,5 +1,18 @@
 # 1D Wave Equation using finite differences
 
+## Requirements
+c++ and cmake.
+
+## Compiling and Running
+in this dir make a build folder then cd into it, cmake .., make, then run the main exec produced.
+```bash
+mkdir build
+cd build
+cmake ..
+make
+./main
+```
+
 ## 1D Wave PDE
 The 1D wave equation is a simple second order partial differencial equation:
 
