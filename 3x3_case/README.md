@@ -3,12 +3,12 @@
 ## Definitions and Terminology
 Let's define our board as an nxn matrix of 0s and 1s.
 ```math
-    B \in M_n(\Set{0, 1}) \\
+    B \in M_n(\Set{0, 1}) \\\\
     B = \begin{bmatrix}
         R_1 \\
         \vdots \\
         R_n \\
-    \end{bmatrix} \\
+    \end{bmatrix} \\\\
     R_i = \begin{bmatrix}
         r_1 && \dots && r_i
     \end{bmatrix}
