@@ -14,6 +14,6 @@ Let's define our board as an nxn matrix of 0s and 1s.
 ```
 ```math
     R_i = \begin{bmatrix}
-        r_1 && \dots && r_i
+        r_1, && \dots, && r_i
     \end{bmatrix}
 ```
