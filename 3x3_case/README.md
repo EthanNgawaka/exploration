@@ -3,7 +3,7 @@
 ## Definitions and Terminology
 Let's define our board as an nxn matrix of 0s and 1s.
 ```math
-    B \isin M_n({0, 1}) \\
+    B \in M_n(\Set{0, 1}) \\
     B = \begin{bmatrix}
         R_1 \\
         \vdots \\
