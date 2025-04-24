@@ -32,7 +32,7 @@ Let's define a new game (that might seem a little contrived at first) that we wi
 Consider two vectors of length k, $P$ and $Q$. This game is very similar in vain to our Tic-Tac-Toe. Each player takes turns placing a 1 or 0 respectively into any position j on either vector. $P_0$'s goal is to fill $P$ and $Q$ such that $P + Q = (1, \dots, 1)$. That is, to make sure that $P + Q$ is equal to the vector of length k filled with ones (called the "k-ones vector" from here onwards). $P$'s goal is the opposite, that is, make $P + Q$ equal to anything *but* the k-ones vector.
 Notice that if $P_0$ wins, $p_i + q_i = 1$. This will be important for our big proof later on.
 
-### Theorem 1.1
+### Theorem 1
 For 2 vectors of length $k \geq 1$ $P$ and $Q$, regardless of who moves first, $P_0$ can ensure that $p_i + q_i = 1$ for all $i \in \Set{1, \dots, k}$.
 
 ### Proof
@@ -47,3 +47,37 @@ Assume $P(r)$ holds. Now, in the $r+1$ length game consider either player placin
 
 Therefore, by mathematical induction, $P(k)$ holds for all $k \geq 1$.
 
+
+## Connecting back to Tic-Tac-Toe
+Hopefully that very hand-wavy argument was good enough for you. But how and why does this vector filling game matter? Esentially, we want to reduce our Tic-Tac-Toe game into a series of these smaller vector filling games. This then allows us to prove the linear dependence of the rows. So let's do that.
+
+### Theorem 2
+For even $n \geq 4$, $P_0$ has a winning strategy regardless of who starts.
+
+### Proof
+Suppose n is of the form $2k$ for some $k$ such that $n \geq 4$. Consider pairs of rows of the form:
+```
+    ${Pair}_i = (R_i, R_{i+1})$ for some odd $i$
+```
+For example, $(R_3, R_4)$.
+
+
+Notice now that we can construct $k$ of these pairs. Since $n \geq 4$, $k \geq 2$. This means that we will always have at least 2 of these pairs.
+
+
+It is now obvious that the game can be reduced into a series of these vector filling games. $P_0$'s strategy then consists of mirroring $P_1$'s placement in a given pair and since n is even, $P_0$ and $P_1$ have an equal number of terms, which means that $P_0$ can never be forced into placing more than $\frac{n}{2}$ 0's into any given row.
+
+
+Now, by theorem 1, we can see that given any of the pairs we constructed before, their sum will always equal the vector consisting of all 1s. Since we have at least 2 pairs, say ${Pair}_i$ and ${Pair}_j$:
+```math
+    R_i + R_{i+1} = R_j + R_{j+1} \rarr R_i = R_j + R_{j+1} - R{i+1}
+```
+
+Which implies that $R_i$ is a linear combination of the other rows, meaning that the rows of B are linearly *dependent* which means that the determinant is 0.
+
+
+Thus, for all even $n \geq 4$, $P_0$ has a winning strategy.
+
+
+### Theorem 3
+For odd $n \geq 4$, $P_0$ has a winning strategy regardless of who starts.
