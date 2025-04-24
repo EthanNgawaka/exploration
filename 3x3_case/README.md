@@ -62,15 +62,15 @@ Suppose n is of the form $2k$ for some $k$ such that $n \geq 4$. Consider pairs 
 For example, $(R_3, R_4)$.
 
 
-Notice now that we can construct $k$ of these pairs. Since $n \geq 4$, $k \geq 2$. This means that we will always have at least 2 of these pairs.
+Notice now that we can construct $k$ many of these pairs. Since $n \geq 4$, $k \geq 2$. This means that we will always have at least 2 of these pairs.
 
 
-It is now obvious that the game can be reduced into a series of these vector filling games. $P_0$'s strategy then consists of mirroring $P_1$'s placement in a given pair and since n is even, $P_0$ and $P_1$ have an equal number of terms, which means that $P_0$ can never be forced into placing more than $\frac{n}{2}$ 0's into any given row.
+It is now obvious that the game can be reduced into a series of these vector filling games. $P_0$'s strategy then consists of mirroring $P_1$'s placement in a given pair and since n is even, $P_0$ and $P_1$ have an equal number of turns, which means that $P_0$ can never be forced into placing more than $\frac{n}{2}$ 0's into any given row.
 
 
-Now, by theorem 1, we can see that given any of the pairs we constructed before, their sum will always equal the vector consisting of all 1s. Since we have at least 2 pairs, say ${Pair}_i$ and ${Pair}_j$:
+Now, by theorem 1, we can see that given any of the pairs we constructed before, their sum will always equal the vector consisting of all 1s. Since we have at least 2 pairs, say ${Pair}_i$ and ${Pair}_j$ :
 ```math
-    R_i + R_{i+1} = R_j + R_{j+1} \implies R_i = R_j + R_{j+1} - R{i+1}
+    R_i + R_{i+1} = R_j + R_{j+1} \implies R_i = R_j + R_{j+1} - R_{i+1}
 ```
 
 Which implies that $R_i$ is a linear combination of the other rows, meaning that the rows of B are linearly *dependent* which means that the determinant is 0.
