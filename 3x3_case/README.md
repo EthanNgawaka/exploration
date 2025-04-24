@@ -36,13 +36,13 @@ Notice that if $P_0$ wins, $p_i + q_i = 1$. This will be important for our big p
 For 2 vectors of length $k \geq 1$ $P$ and $Q$, regardless of who moves first, $P_0$ can ensure that $p_i + q_i = 1$ for all $i \in \Set{1, \dots, k}$.
 
 ### Proof
-Let $P(k)$ be the statement "$P_0$ can force $P + Q$ = k-ones vector regardless of who starts".
+Let $P(k)$ be the statement $P_0$ can force $P + Q$ = k-ones vector regardless of who starts.
 
 
 For k = 1, the outcome is trivial. $P_0$ will win regardless as there are only 2 positions to place anything.
 
 
-Assume $P(r)$ holds. Now in the $r+1$ length game consider either player placing their element into a vector. This has the effect of "isolating" this position in both vectors. That is, if $P_0$ places a 0 in the jth position of vector P, then $P_1$ can either match with a 1 in the Q vector which reduces the game to that of length $r$, or they can place a 1 elsewhere, ignoring that position which also reduces the game to that of length $r$. Note that since there are $2k$ positions to play in, $P_0$ can never be forced to place a second 0 in that initial position in the other vector as that would require an odd number of play spaces to "swap the parity" of $P_0$ and $P_1$s turns. Similar logic can be used to prove the case when $P_1$ goes first.
+Assume $P(r)$ holds. Now, in the $r+1$ length game consider either player placing their element into a vector. This has the effect of "isolating" this position in both vectors. That is, if $P_0$ places a 0 in the jth position of vector $P$, then $P_1$ can either match with a 1 in the $Q$ vector which reduces the game to that of length $r$, or they can place a 1 elsewhere, ignoring that position which also reduces the game to that of length $r$. Note that since there are $2k$ positions to play in, $P_0$ can never be forced to place a second 0 in that initial position in the other vector as that would require an odd number of play spaces to "swap the parity" of $P_0$ and $P_1$'s turns. Similar logic can be used to prove the case when $P_1$ goes first.
 
 
 Therefore, by mathematical induction, $P(k)$ holds for all $k \geq 1$.
