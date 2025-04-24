@@ -13,7 +13,5 @@ Let's define our board as an nxn matrix of 0s and 1s.
     \end{bmatrix}
 ```
 ```math
-    R_i = \begin{bmatrix}
-        r_1, && \dots, && r_i
-    \end{bmatrix}
+    R_i = (r_1, \dots, r_i)
 ```
