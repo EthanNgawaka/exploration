@@ -56,8 +56,8 @@ For even $n \geq 4$, $P_0$ has a winning strategy regardless of who starts.
 
 ### Proof
 Suppose n is of the form $2k$ for some $k$ such that $n \geq 4$. Consider pairs of rows of the form:
-```
-    ${Pair}_i = (R_i, R_{i+1})$ for some odd $i$
+```math
+    {Pair}_i = (R_i, R_{i+1}) \text{ for some odd } i
 ```
 For example, $(R_3, R_4)$.
 
