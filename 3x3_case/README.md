@@ -32,7 +32,7 @@ Let's define a new game (that might seem a little contrived at first) that we wi
 Consider two vectors of length k, $P$ and $Q$. This game is very similar in vain to our Tic-Tac-Toe. Each player takes turns placing a 1 or 0 respectively into any position j on either vector. $P_0$'s goal is to fill $P$ and $Q$ such that $P + Q = (1, \dots, 1)$. That is, to make sure that $P + Q$ is equal to the vector of length k filled with ones (called the "k-ones vector" from here onwards). $P$'s goal is the opposite, that is, make $P + Q$ equal to anything *but* the k-ones vector.
 
 
-Notice that if $P_0$ wins, $p_i + q_i = 1$ $\forall i \in \N$.
+Notice that if $P_0$ wins, $p_i + q_i = 1$ $\forall i \in \mathbb{N}$.
 
 
 Let's try construct a proof using mathematical induction.
