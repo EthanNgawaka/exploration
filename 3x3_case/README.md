@@ -52,17 +52,17 @@ Therefore, by mathematical induction, $P(k)$ holds for all $k \geq 1$.
 Hopefully that very hand-wavy argument was good enough for you. But how and why does this vector filling game matter? Esentially, we want to reduce our Tic-Tac-Toe game into a series of these smaller vector filling games. This then allows us to prove the linear dependence of the rows. So let's do that.
 
 ### Theorem 2
-For even $n \geq 4$, $P_0$ has a winning strategy regardless of who starts.
+For a matrix with an even number of rows $P_0$ has a winning strategy regardless of who starts.
 
 ### Proof
-Suppose n is of the form $2k$ for some $k$ such that $n \geq 4$. Consider pairs of rows of the form:
+Suppose the number of rows $l$ is of the form $2k$ for some $k$ such that $l \geq 4$. Consider pairs of rows of the form:
 ```math
     {Pair}_i = (R_i, R_{i+1}) \text{ for some odd } i
 ```
 For example, $(R_3, R_4)$.
 
 
-Notice now that we can construct $k$ many of these pairs. Since $n \geq 4$, $k \geq 2$. This means that we will always have at least 2 of these pairs.
+Notice now that we can construct $k$ many of these pairs. Since $l \geq 4 \implies k \geq 2$. This means that we will always have at least 2 of these pairs.
 
 
 It is now obvious that the game can be reduced into a series of these vector filling games. $P_0$'s strategy then consists of mirroring $P_1$'s placement in a given pair and since n is even, $P_0$ and $P_1$ have an equal number of turns, which means that $P_0$ can never be forced into placing more than $\frac{n}{2}$ 0's into any given row.
@@ -73,7 +73,7 @@ Now, by theorem 1, we can see that given any of the pairs we constructed before,
     R_i + R_{i+1} = R_j + R_{j+1} \implies R_i = R_j + R_{j+1} - R_{i+1}
 ```
 
-Which implies that $R_i$ is a linear combination of the other rows, meaning that the rows of B are linearly *dependent* which means that the determinant is 0.
+Which implies that $R_i$ is a linear combination of the other rows, meaning that the rows of B are linearly *dependent* which, for square matrices, means that the determinant is 0.
 
 
 Thus, for all even $n \geq 4$, $P_0$ has a winning strategy.
@@ -81,3 +81,13 @@ Thus, for all even $n \geq 4$, $P_0$ has a winning strategy.
 
 ### Theorem 3
 For odd $n \geq 4$, $P_0$ has a winning strategy regardless of who starts.
+
+### Proof
+The key idea here is to "ignore" the bottom row, which makes the problem equivalent to our previous case of an even number of rows. If $P_1$ places a 1 in the bottom row, then $P_0$ can place a 0 in the bottom row as well. If this repeats, the bottom row will eventually be filled and the parity of turns will shift as there are an odd number of columns. For example, if $P_0$ started and both players filled this "odd" row, then $P_1$ would end up going first in the (n-1)xn submatrix. We know by theorem 2 that regardless of who starts in this even-rowed submatrix, $P_0$ has a strategy to force at least two rows to be linearly dependent.
+
+
+Since $P_0$ can force linearly dependent rows in the (n-1)xn submatrix, the determinant of the whole nxn matrix will be 0. Meaning $P_0$ has a winning strategy regardless of who starts.
+
+
+## Done!
+This is all very hand-wavy as said before but hopefully enough to get a general idea for the proof. I also was halfway through writing up theorem 3 before realising that the rows of a rectangular matrix being linearly dependent don't imply anything about it's determinant because it't *not defined*... duh. So if theorem 2 seems weird it's because it was originally written for the case of an nxn matrix where n is even. Realistically it shouldve been split up into another theorem which shows that given an nxk matrix with n being even $P_0$ can force it to have linearly dependent rows etc but this ended up being way more than I thought it would be anyways so, sorry for the lack of rigor.
