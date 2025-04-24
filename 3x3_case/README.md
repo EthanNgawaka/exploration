@@ -70,7 +70,7 @@ It is now obvious that the game can be reduced into a series of these vector fil
 
 Now, by theorem 1, we can see that given any of the pairs we constructed before, their sum will always equal the vector consisting of all 1s. Since we have at least 2 pairs, say ${Pair}_i$ and ${Pair}_j$:
 ```math
-    R_i + R_{i+1} = R_j + R_{j+1} \rarr R_i = R_j + R_{j+1} - R{i+1}
+    R_i + R_{i+1} = R_j + R_{j+1} \implies R_i = R_j + R_{j+1} - R{i+1}
 ```
 
 Which implies that $R_i$ is a linear combination of the other rows, meaning that the rows of B are linearly *dependent* which means that the determinant is 0.
